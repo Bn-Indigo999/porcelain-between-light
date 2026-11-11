@@ -41,6 +41,14 @@
     .form-status.is-ok{background:#e9f7ef;border-color:#bfe3cd;color:#1c6b3d}
     .form-status.is-err{background:#fdecea;border-color:#f3c3bf;color:#a13a32}
     .form-status.is-pending{background:#eef4ff;border-color:#c9d9f5;color:#244c93}
+  
+    /* 3D 骨质瓷 */
+    .porcelain-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;display:block;cursor:grab;touch-action:none;outline:none}
+    .material-stage.dragging .porcelain-canvas{cursor:grabbing}
+    .material-stage.has-3d .porcelain-piece{display:none}
+    .material-stage.has-3d .stage-light{opacity:calc(var(--glow)*.14)}
+    .material-stage .stage-caption,.material-stage .stage-ruler,.material-stage .rotate-cue{z-index:3}
+    .material-stage:focus-within{outline:1px solid rgba(203,223,255,.35);outline-offset:-1px}
   </style>
   <style id="planar-motion">
     .porcelain-piece{cursor:grab;touch-action:none;transform:translate(var(--move-x,0px),calc(20px + var(--move-y,0px)));transition:filter .2s}
@@ -72,7 +80,7 @@
       <div class="intro-title"><div class="eyebrow">A MATERIAL, A PLACE, A SCENE</div><h2 class="serif">让一束光<br>有了瓷的形状</h2></div>
       <div class="intro-copy"><p class="lead">骨质瓷的白、薄与透，是设计的起点；唐山的工艺与地方记忆，是形态生长的土壤。</p><p>本项目围绕“文旅场景中的唐山骨质瓷陈设品设计”展开，尝试把材质特性、文化转译与空间体验连成一条设计路径。设计以人的场景体验为核心，以材料与工艺为基础，再以艺术语言搭起地方文化与当代陈设之间的桥梁。</p><p>从滦河水系、湿地生态、海洋生物到工业遗产，地方线索将被转译为器形、孔隙肌理、光影与展陈关系；陈设品也因此成为能够讲述场所、引发观看与带走记忆的空间媒介。作品与图像为阶段性研究成果，持续更新中。</p><div class="keywords"><span>白 · 薄 · 透</span><span>滦河与湿地</span><span>海洋生物</span><span>工业记忆</span><span>场景叙事</span></div></div>
     </div></section>
-    <section class="material" id="material"><div class="wrap"><div class="material-head"><div><div class="eyebrow">BONE CHINA / MATERIAL STUDY</div><h2>光，住进奶白的瓷里</h2></div><p>骨质瓷以温润的白、轻薄的胎体与柔和的透光感见长。拖动器物，在平面中移动，观察它在蓝色空间与柔光下的状态。</p></div><div class="material-grid"><div class="material-copy"><div class="material-feature"><span>01 / MILKY WHITE</span><h3>奶白</h3><p>白里带着柔和暖意，在蓝色环境中显出安静、细腻的层次。</p></div><div class="material-feature"><span>02 / TRANSLUCENCY</span><h3>透</h3><p>薄胎边缘与镂空部位更容易显出通透感，让器物轮廓变得轻盈。</p></div><div class="material-feature"><span>03 / GLOW</span><h3>光</h3><p>背光或侧光照射时，瓷体会呈现柔和的漫射亮度，适合转化为展陈体验。</p></div><label class="light-control" for="glowRange"><span>背光强度</span><input id="glowRange" type="range" min="15" max="100" value="66" aria-label="调节骨质瓷背光强度"><output id="glowValue">66%</output></label><p class="material-caption">这是基于视觉效果的交互示意，不代表真实材料检测数据。</p></div><div class="material-stage" id="materialStage" style="--glow:.66"><div class="stage-light"></div><div class="porcelain-piece" role="img" aria-label="可在平面内拖动的透光奶白骨质瓷器物示意" tabindex="0" title="鼠标拖动或触屏滑动，可在平面内移动器物"><div class="vase-neck"></div><div class="vase-body"><i></i><i></i><i></i></div><div class="vase-foot"></div></div><div class="stage-caption"><span>LIGHT TRANSMISSION STUDY</span><strong>薄胎 · 柔光 · 温润白</strong></div><div class="stage-ruler">光线 / 薄胎 / 空间</div><div class="rotate-cue">拖动器物 · 平面移动</div></div></div><div class="status-note"><strong>唐山骨质瓷</strong><span>唐山是我国重要的骨质瓷生产基地。“唐山骨质瓷”于 2025 年入选首批“中国消费名品”区域品牌，延续着当地陶瓷产业的工艺积累，也持续进入新的设计与文旅场景。</span><a href="https://whgdhlyj.tangshan.gov.cn/lvyouju/lvyj_gongzuodongtai/20250919/1637804.html" target="_blank" rel="noreferrer">了解品牌动态 ↗</a></div></div></section>
+    <section class="material" id="material"><div class="wrap"><div class="material-head"><div><div class="eyebrow">BONE CHINA / MATERIAL STUDY</div><h2>光，住进奶白的瓷里</h2></div><p>骨质瓷以温润的白、轻薄的胎体与柔和的透光感见长。拖动旋转，观察它在蓝色空间与柔光下的透光变化。</p></div><div class="material-grid"><div class="material-copy"><div class="material-feature"><span>01 / MILKY WHITE</span><h3>奶白</h3><p>白里带着柔和暖意，在蓝色环境中显出安静、细腻的层次。</p></div><div class="material-feature"><span>02 / TRANSLUCENCY</span><h3>透</h3><p>薄胎边缘与镂空部位更容易显出通透感，让器物轮廓变得轻盈。</p></div><div class="material-feature"><span>03 / GLOW</span><h3>光</h3><p>背光或侧光照射时，瓷体会呈现柔和的漫射亮度，适合转化为展陈体验。</p></div><label class="light-control" for="glowRange"><span>背光强度</span><input id="glowRange" type="range" min="15" max="100" value="66" aria-label="调节骨质瓷背光强度"><output id="glowValue">66%</output></label><p class="material-caption">这是基于视觉效果的交互示意，不代表真实材料检测数据。</p></div><div class="material-stage" id="materialStage" style="--glow:.66"><div class="stage-light"></div><canvas id="porcelainCanvas" class="porcelain-canvas" tabindex="0" aria-label="可拖动旋转的骨质瓷瓶三维模型"></canvas><div class="porcelain-piece" role="img" aria-label="透光奶白骨质瓷瓶示意（无 WebGL 时的替代图）" tabindex="0" title="鼠标拖动或触屏滑动，可在平面内移动器物"><div class="vase-neck"></div><div class="vase-body"><i></i><i></i><i></i></div><div class="vase-foot"></div></div><div class="stage-caption"><span>LIGHT TRANSMISSION STUDY</span><strong>薄胎 · 柔光 · 温润白</strong></div><div class="stage-ruler">光线 / 薄胎 / 空间</div><div class="rotate-cue">拖动旋转 · 立体查看</div></div></div><div class="status-note"><strong>唐山骨质瓷</strong><span>唐山是我国重要的骨质瓷生产基地。“唐山骨质瓷”于 2025 年入选首批“中国消费名品”区域品牌，延续着当地陶瓷产业的工艺积累，也持续进入新的设计与文旅场景。</span><a href="https://whgdhlyj.tangshan.gov.cn/lvyouju/lvyj_gongzuodongtai/20250919/1637804.html" target="_blank" rel="noreferrer">了解品牌动态 ↗</a></div></div></section>
     <section class="principles"><div class="wrap"><div class="section-head"><div><div class="smallcap">THREE DESIGN LENSES</div><h2>从三个维度进入场景</h2></div><p>不同文旅场景拥有不同的文化关系与体验重点。设计从场地出发，寻找瓷与人的相遇方式。</p></div>
       <div class="principle-grid"><article class="principle"><span class="principle-num">01 / PLACE</span><h3>地方原生性</h3><p>从唐山的工艺脉络、生活经验与地方资源出发，让陈设与场地建立真实关联。</p></article><article class="principle"><span class="principle-num">02 / SYMBOL</span><h3>符号感知性</h3><p>把可识别的文化意象转译为器形、纹理与空间语言，让观者看见并读懂。</p></article><article class="principle"><span class="principle-num">03 / VALUE</span><h3>价值表达性</h3><p>让作品参与场景叙事与公共体验，在展示、交流和使用中传递地方价值。</p></article></div>
     </div></section>
@@ -212,5 +220,10 @@
   bind("surveyForm");
 })();
 </script>
+
+<script type="importmap">
+{"imports":{"three":"./assets/three.module.min.js"}}
+</script>
+<script type="module" src="./assets/porcelain3d.js"></script>
 </body>
 </html>
