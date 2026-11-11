@@ -1,4 +1,4 @@
-/**
+﻿/**
  * https://github.com/google/model-viewer/blob/master/packages/model-viewer/src/three-components/EnvironmentScene.ts
  */
 
@@ -10,7 +10,7 @@ import {
  	MeshStandardMaterial,
  	PointLight,
  	Scene,
-} from 'three';
+} from "./three.module.min.js";
 
 class RoomEnvironment extends Scene {
 

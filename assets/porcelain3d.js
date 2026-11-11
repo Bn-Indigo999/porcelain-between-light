@@ -1,7 +1,7 @@
 ﻿/* 骨质瓷 · 3D 材质演示
    用 three.js 车削出一个骨质瓷瓶，支持拖动旋转、自动缓慢旋转、背光强度联动。
    载入失败时保留页面原有的 CSS 示意图（不报错）。 */
-import * as THREE from "three";
+import * as THREE from "./three.module.min.js";
 import { RoomEnvironment } from "./RoomEnvironment.js";
 
 (function () {
@@ -107,7 +107,20 @@ import { RoomEnvironment } from "./RoomEnvironment.js";
 
   var spline = new THREE.SplineCurve(profile);
   var lathePoints = spline.getPoints(140);
-  var geometry = new THREE.LatheGeometry(lathePoints, 128);
+  var geometry = new THREE.LatheGeometry(lathePoints, 160);
+
+  // 加 6 道很浅的瓜棱：让轮廓在旋转时有细微变化，否则正圆车削转起来像没动
+  (function addLobes() {
+    var pos = geometry.attributes.position;
+    for (var i = 0; i < pos.count; i++) {
+      var x = pos.getX(i), y = pos.getY(i), z = pos.getZ(i);
+      var theta = Math.atan2(z, x);
+      var k = 1 + 0.035 * Math.cos(6 * theta) + 0.012 * Math.cos(12 * theta);
+      pos.setX(i, x * k);
+      pos.setZ(i, z * k);
+    }
+    geometry.computeVertexNormals();
+  })();
 
   var material = new THREE.MeshPhysicalMaterial({
     color: 0xfff8ec,
@@ -130,6 +143,48 @@ import { RoomEnvironment } from "./RoomEnvironment.js";
   vase.scale.setScalar(1.0);
   vase.position.y = 0.02;
   scene.add(vase);
+
+  // 釉下蓝点：绕瓶身一圈，旋转时能明显看到它们移动
+  (function addGlazeDots() {
+    function radiusAt(y) {
+      for (var i = 1; i < lathePoints.length; i++) {
+        var a = lathePoints[i - 1], b = lathePoints[i];
+        if ((y >= a.y && y <= b.y) || (y <= a.y && y >= b.y)) {
+          var t = (y - a.y) / ((b.y - a.y) || 1);
+          return a.x + (b.x - a.x) * t;
+        }
+      }
+      return lathePoints[lathePoints.length - 1].x;
+    }
+
+    var dotGeo = new THREE.SphereGeometry(0.026, 16, 12);
+    var dotMat = new THREE.MeshPhysicalMaterial({
+      color: 0x1f4fd8,
+      roughness: 0.32,
+      metalness: 0,
+      clearcoat: 0.6,
+      clearcoatRoughness: 0.3
+    });
+
+    var spots = [
+      [0.35, 0.12], [1.15, 0.05], [2.05, 0.16], [2.85, 0.02], [3.75, 0.18], [4.55, 0.08],
+      [5.35, 0.2], [0.75, 0.34], [1.75, 0.42], [2.55, 0.3], [3.35, 0.4], [4.2, 0.36],
+      [5.05, 0.44], [5.75, 0.32], [1.4, 0.62], [3.0, 0.58], [4.6, 0.66], [0.2, 0.55]
+    ];
+
+    spots.forEach(function (s) {
+      var theta = s[0];
+      var y = s[1];
+      // 必须和瓜棱公式一致，否则蓝点会浮在轮廓外
+      var lobe = 1 + 0.035 * Math.cos(6 * theta) + 0.012 * Math.cos(12 * theta);
+      var r = radiusAt(y) * lobe * 1.002;
+      var dot = new THREE.Mesh(dotGeo, dotMat);
+      dot.position.set(Math.cos(theta) * r, y, Math.sin(theta) * r);
+      dot.scale.set(1, 1, 0.3);
+      dot.lookAt(0, y + 0.02, 0);
+      vase.add(dot);
+    });
+  })();
 
   // 内部一点暖光，暗示胎体的透
   var core = new THREE.Mesh(
@@ -158,8 +213,8 @@ import { RoomEnvironment } from "./RoomEnvironment.js";
     var dy = event.clientY - lastY;
     lastX = event.clientX;
     lastY = event.clientY;
-    targetY += dx * 0.009;
-    targetX = Math.max(-0.45, Math.min(0.55, targetX + dy * 0.005));
+    targetY += dx * 0.013;
+    targetX = Math.max(-0.45, Math.min(0.55, targetX + dy * 0.006));
   }
   function onUp() {
     dragging = false;
@@ -227,8 +282,9 @@ import { RoomEnvironment } from "./RoomEnvironment.js";
     last = now;
     if (!running) return;
 
-    if (!dragging && !reduceMotion && now - idleAt > 2600) {
-      targetY += dt * 0.22;
+    if (!dragging && !reduceMotion && now - idleAt > 1200) {
+      targetY += dt * 0.55;
+      targetX = Math.sin(now * 0.00045) * 0.14;
     }
 
     currentY += (targetY - currentY) * 0.09;
