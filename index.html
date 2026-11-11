@@ -35,6 +35,12 @@
 
     .porcelain-piece{cursor:grab;touch-action:none;transform-style:preserve-3d;transform:translateY(20px) rotateY(var(--rotate-y,0deg)) rotateX(var(--rotate-x,0deg));transition:filter .2s}.porcelain-piece.dragging,.product-stage.dragging{cursor:grabbing}.vase-neck{transform:translateZ(10px)}.vase-body{transform:translateZ(2px);backface-visibility:hidden}.vase-foot{transform:translateZ(-4px)}.product-stage{cursor:grab;touch-action:none}.product-stage .product-art{transform:rotateY(var(--rotate-y,0deg)) rotateX(var(--rotate-x,0deg));transform-style:preserve-3d;animation:none;transition:transform .12s ease-out}.product-stage.dragging .product-art{transition:none}.rotate-cue{position:absolute;right:23px;top:24px;border:1px solid rgba(221,235,255,.28);border-radius:30px;padding:9px 12px;color:#c5d8f5;font-size:9px;letter-spacing:.08em}.material-head h2{max-width:100%;white-space:nowrap}.custom-preview[data-color="sand"] .product-art .candle-flame{fill:#ffd78b}.custom-preview[data-color="deep"] .product-art .candle-flame{fill:#f5ca75}
     @media(max-width:850px){.material-head h2{white-space:normal}.rotate-cue{right:14px;top:14px;font-size:8px}}
+  
+    /* 表单提交状态 */
+    .form-status{grid-column:1/-1;margin:12px 0 0;font-size:12px;line-height:1.8;padding:10px 14px;border-radius:8px;background:rgba(255,255,255,.72);border:1px solid var(--line);color:var(--ink)}
+    .form-status.is-ok{background:#e9f7ef;border-color:#bfe3cd;color:#1c6b3d}
+    .form-status.is-err{background:#fdecea;border-color:#f3c3bf;color:#a13a32}
+    .form-status.is-pending{background:#eef4ff;border-color:#c9d9f5;color:#244c93}
   </style>
   <style id="planar-motion">
     .porcelain-piece{cursor:grab;touch-action:none;transform:translate(var(--move-x,0px),calc(20px + var(--move-y,0px)));transition:filter .2s}
@@ -83,9 +89,9 @@
       <div class="story-grid"><a class="story-card large" href="assets/morphology-study.jpg?v=2" target="_blank" rel="noreferrer"><img src="assets/morphology-study.jpg?v=2" alt="藻类形态与骨质瓷设计研究展板"><div class="story-caption"><span>FORM STUDY / 01</span><h3>微观生长的形态档案</h3><p>藻类观察 · 几何提取 · 形态转译</p></div></a><a class="story-card small" href="assets/design-board.jpg?v=2" target="_blank" rel="noreferrer"><img src="assets/design-board.jpg?v=2" alt="微藻形态骨质瓷设计展板"><div class="story-caption"><span>OBJECT & DISPLAY / 02</span><h3>薄胎器物与展陈推演</h3></div></a><a class="story-card small" href="assets/spatial-display.png" target="_blank" rel="noreferrer"><img src="assets/spatial-display.png" alt="深蓝空间中的瓷艺陈设场景"><div class="story-caption"><span>SPATIAL TEST / 03</span><h3>蓝色空间中的瓷光层次</h3></div></a></div>
     </div></section>
     <section class="scenes" id="scenes"><div class="wrap"><div class="eyebrow">SCENE TYPOLOGY</div><h2>让设计回应不同的地方</h2><div class="scene-grid"><article class="scene"><span>01 · PLACE LED</span><h3>地方原生性主导</h3><p>南湖、滦河湿地与沿海生态提供水系、湿地植物、红鲤与海洋生物等线索。设计从地方自然经验出发，回应休憩、观赏与轻松的空间氛围。</p></article><article class="scene"><span>02 · SYMBOL LED</span><h3>符号感知性主导</h3><p>唐山博物馆、工业遗址与海洋主题展陈适合组织可阅读的文化叙事。器物可借助硅藻几何、工业结构与骨质瓷镂空工艺，形成清晰的观看线索。</p></article><article class="scene"><span>03 · VALUE LED</span><h3>价值表达性主导</h3><p>唐山宴、河头老街等复合消费场景连接体验与纪念。小巧便携的伴手礼、可使用的器物与地方图案，让设计从现场体验延伸到日常生活。</p></article></div><div class="scenes-foot">设计推演遵循“人理为核 · 物理为基 · 艺理为桥”；三种类型可在同一场景中交织出现。</div></div></section>
-    <section class="inquiry" id="inquiry"><div class="wrap"><div class="form-intro"><div class="eyebrow">CUSTOM WORK / SUGGESTIONS</div><h2>定制合作与设计建议</h2><p>如果你有空间项目、作品定制或研究建议，欢迎在这里告诉我。留下邮箱后，我可以通过邮件联系你。</p></div><div class="form-card"><form name="custom-inquiry" method="POST" data-netlify="true" action="https://porcelain-between-light.netlify.app/thanks.html"><input type="hidden" name="form-name" value="custom-inquiry"><div class="form-fields"><div class="form-field"><label for="inquiry-name">怎么称呼你</label><input id="inquiry-name" type="text" name="name" maxlength="60" placeholder="姓名或称呼"></div><div class="form-field"><label for="inquiry-email">联系邮箱 <span class="q-hint">回复时使用</span></label><input id="inquiry-email" type="email" name="email" required placeholder="name@example.com"></div><div class="form-field"><label for="inquiry-type">交流主题</label><select id="inquiry-type" name="type" required><option value="" disabled selected>请选择</option><option>骨质瓷陈设品定制</option><option>文旅空间合作</option><option>作品或网站建议</option><option>其他交流</option></select></div><div class="form-field"><label for="inquiry-project">相关场景或项目名称</label><input id="inquiry-project" type="text" name="project" maxlength="100" placeholder="可选"></div><div class="form-field full"><label for="inquiry-message">具体需求或建议</label><textarea id="inquiry-message" name="message" required maxlength="2000" placeholder="请简单描述你的想法、使用场景或希望改进的地方"></textarea></div></div><p class="privacy">提交后，内容将发送到站点负责人的联系邮箱并保存在 Netlify 表单后台。你留下的邮箱仅用于回复本次咨询。</p><button class="submit" type="submit">发送定制 / 建议 ↗</button></form></div></div></section>
+    <section class="inquiry" id="inquiry"><div class="wrap"><div class="form-intro"><div class="eyebrow">CUSTOM WORK / SUGGESTIONS</div><h2>定制合作与设计建议</h2><p>如果你有空间项目、作品定制或研究建议，欢迎在这里告诉我。留下邮箱后，我可以通过邮件联系你。</p></div><div class="form-card"><noscript><p class="form-status is-err">请开启 JavaScript，或直接写信到 caixiaoyi29@gmail.com。</p></noscript><form id="inquiryForm" name="custom-inquiry" method="POST" action="https://formsubmit.co/caixiaoyi29@gmail.com"><input type="hidden" name="_honey" value="" tabindex="-1" autocomplete="off" style="display:none"><input type="hidden" name="_subject" value="瓷光之间 · 定制 / 交流"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_next" value="https://bn-indigo999.github.io/porcelain-between-light/thanks.html"><div class="form-fields"><div class="form-field"><label for="inquiry-name">怎么称呼你</label><input id="inquiry-name" type="text" name="name" maxlength="60" placeholder="姓名或称呼"></div><div class="form-field"><label for="inquiry-email">联系邮箱 <span class="q-hint">回复时使用</span></label><input id="inquiry-email" type="email" name="email" required placeholder="name@example.com"></div><div class="form-field"><label for="inquiry-type">交流主题</label><select id="inquiry-type" name="type" required><option value="" disabled selected>请选择</option><option>骨质瓷陈设品定制</option><option>文旅空间合作</option><option>作品或网站建议</option><option>其他交流</option></select></div><div class="form-field"><label for="inquiry-project">相关场景或项目名称</label><input id="inquiry-project" type="text" name="project" maxlength="100" placeholder="可选"></div><div class="form-field full"><label for="inquiry-message">具体需求或建议</label><textarea id="inquiry-message" name="message" required maxlength="2000" placeholder="请简单描述你的想法、使用场景或希望改进的地方"></textarea></div></div><p class="privacy">提交后，内容会直接发送到站点负责人的邮箱。你留下的邮箱仅用于回复本次咨询。</p><p class="form-status" data-status hidden></p><button class="submit" type="submit">发送定制 / 建议 ↗</button></form></div></div></section>
 
-    <section class="survey" id="survey"><div class="wrap"><div class="form-intro"><div class="eyebrow">SCENE PREFERENCE SURVEY</div><h2>文旅场景中的骨质瓷陈设品偏好调研</h2><p>问卷用于了解不同文旅场景中的骨质瓷陈设品偏好。第 4—6 题会根据你选择的场景显示；调查结果仅用于设计研究分析。</p></div><div class="form-card"><form name="scene-preference-survey" method="POST" data-netlify="true" action="https://porcelain-between-light.netlify.app/thanks.html"><input type="hidden" name="form-name" value="scene-preference-survey">
+    <section class="survey" id="survey"><div class="wrap"><div class="form-intro"><div class="eyebrow">SCENE PREFERENCE SURVEY</div><h2>文旅场景中的骨质瓷陈设品偏好调研</h2><p>问卷用于了解不同文旅场景中的骨质瓷陈设品偏好。第 4—6 题会根据你选择的场景显示；调查结果仅用于设计研究分析。</p></div><div class="form-card"><form id="surveyForm" name="scene-preference-survey" method="POST" action="https://formsubmit.co/caixiaoyi29@gmail.com"><input type="hidden" name="_honey" value="" tabindex="-1" autocomplete="off" style="display:none"><input type="hidden" name="_subject" value="瓷光之间 · 场景偏好问卷"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_next" value="https://bn-indigo999.github.io/porcelain-between-light/thanks.html">
       <div class="q-block"><div class="q-title"><span class="q-num">01</span>您的年龄段是？</div><div class="choice-list inline"><label><input type="radio" name="age" value="18-25岁" required> A. 18-25岁</label><label><input type="radio" name="age" value="26-35岁"> B. 26-35岁</label><label><input type="radio" name="age" value="36-45岁"> C. 36-45岁</label><label><input type="radio" name="age" value="46岁及以上"> D. 46岁及以上</label></div></div>
       <div class="q-block"><div class="q-title"><span class="q-num">02</span>在唐山旅游时，您最常去或最喜欢哪类文旅场景？<span class="q-hint">可多选</span></div><div class="choice-list"><label><input type="checkbox" name="scene" value="自然休闲型" data-scene="natural" required> A. 自然休闲型（如南湖公园、滦河湿地，主打风景与放松）</label><label><input type="checkbox" name="scene" value="文化展陈型" data-scene="culture"> B. 文化展陈型（如博物馆、工业遗址，主打看展与科普）</label><label><input type="checkbox" name="scene" value="市井消费型" data-scene="market"> C. 市井消费型（如唐山宴、河头老街，主打美食、热闹与买伴手礼）</label></div></div>
       <div class="q-block"><div class="q-title"><span class="q-num">03</span>您是否愿意在文旅场景中购买或欣赏“骨质瓷”材质的陈设艺术品（如花瓶、壁饰、摆件等）？</div><div class="choice-list inline"><label><input type="radio" name="willingness" value="非常愿意" required> A. 非常愿意</label><label><input type="radio" name="willingness" value="比较愿意"> B. 比较愿意</label><label><input type="radio" name="willingness" value="一般"> C. 一般</label><label><input type="radio" name="willingness" value="不太感兴趣"> D. 不太感兴趣</label></div></div>
@@ -93,7 +99,7 @@
       <div class="scenario-detail" data-detail="culture" hidden><div class="q-block"><div class="q-title"><span class="q-num">05</span>【文化展陈型场景】您认为这里的骨质瓷陈设品，最应具备什么特质？</div><div class="choice-list"><label><input type="radio" name="culture-preference" value="文化叙事性强，能讲述历史故事"> A. 文化叙事性强，能讲述历史故事</label><label><input type="radio" name="culture-preference" value="工艺精湛，有镂空或浮雕细节"> B. 工艺精湛，有镂空或浮雕细节</label><label><input type="radio" name="culture-preference" value="具有强烈的工业风或复古感"> C. 具有强烈的工业风或复古感</label><label><input type="radio" name="culture-preference" value="适合作为高档纪念品收藏"> D. 适合作为高档纪念品收藏</label></div></div></div>
       <div class="scenario-detail" data-detail="market" hidden><div class="q-block"><div class="q-title"><span class="q-num">06</span>【市井消费型场景】您认为这里的骨质瓷陈设品，最应具备什么特质？</div><div class="choice-list"><label><input type="radio" name="market-preference" value="实用性强，可作餐具茶具使用"> A. 实用性强（如能作为餐具、茶具使用）</label><label><input type="radio" name="market-preference" value="色彩鲜艳，有市井烟火气"> B. 色彩鲜艳，有市井烟火气（如红鲤、民俗色彩）</label><label><input type="radio" name="market-preference" value="小巧便携，适合带回家做伴手礼"> C. 小巧便携，适合带回家做伴手礼</label><label><input type="radio" name="market-preference" value="价格亲民，性价比高"> D. 价格亲民，性价比高</label></div></div></div>
       <div class="q-block"><label class="q-title" for="survey-open"><span class="q-num">07</span>您认为目前唐山景区的陶瓷纪念品，最需要改进的地方是什么？<span class="q-hint">选填</span></label><textarea id="survey-open" name="improvement" maxlength="1200" placeholder="欢迎写下你的看法"></textarea></div>
-      <p class="privacy">提交即表示你同意将本问卷答案用于骨质瓷陈设品设计研究。请勿填写可识别个人身份的信息。</p><button class="submit" type="submit">提交问卷 ↗</button><p class="survey-result">问卷结果由作者查看，不会展示个人身份信息。</p>
+      <p class="privacy">提交即表示你同意将本问卷答案用于骨质瓷陈设品设计研究。答案会直接发送到作者邮箱。请勿填写可识别个人身份的信息。</p><p class="form-status" data-status hidden></p><button class="submit" type="submit">提交问卷 ↗</button><p class="survey-result">问卷结果由作者查看，不会展示个人身份信息。</p>
     </form></div></div></section>
 
     <section class="guest" id="guest"><div class="wrap guest-grid"><div><div class="smallcap">OPEN GUESTBOOK</div><h2>留言交流</h2><p class="guest-intro">欢迎留下你对唐山骨质瓷、文旅场景或作品的看法。留言提交后将公开显示，所有访客都能阅读。请不要写邮箱、电话、住址等个人信息。</p><div class="wall-status">留言墙实时共享公开留言。昵称可选；请只发布你愿意公开分享的内容。</div><p class="guest-note">作者可在 Supabase 后台隐藏或删除不合适的留言。</p></div>
@@ -134,5 +140,77 @@
     const guestMessage=document.querySelector('#guestMessage');guestMessage.addEventListener('input',()=>document.querySelector('#guestCount').textContent=guestMessage.value.length+' / 300');
     loadWall();setInterval(loadWall,25000);
   </script>
+
+<script>
+(function () {
+  "use strict";
+  var ENDPOINT = "https://formsubmit.co/ajax/caixiaoyi29@gmail.com";
+  var CONTACT_MAIL = "caixiaoyi29@gmail.com";
+  var LABELS = { inquiryForm: "发送定制 / 建议 ↗", surveyForm: "提交问卷 ↗" };
+
+  function setStatus(form, text, kind) {
+    var el = form.querySelector("[data-status]");
+    if (!el) return;
+    el.hidden = !text;
+    el.textContent = text || "";
+    el.className = "form-status" + (kind ? " is-" + kind : "");
+  }
+
+  function collect(form) {
+    var fd = new FormData(form);
+    var out = {};
+    fd.forEach(function (value, key) {
+      if (key === "_honey") return;
+      var v = String(value).trim();
+      if (!v) return;
+      out[key] = out[key] ? out[key] + "、" + v : v;
+    });
+    return out;
+  }
+
+  function bind(formId) {
+    var form = document.getElementById(formId);
+    if (!form) return;
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var payload = collect(form);
+      var btn = form.querySelector('button[type="submit"]');
+      if (payload._honey) return;
+
+      if (btn) { btn.disabled = true; btn.textContent = "发送中…"; }
+      setStatus(form, "正在发送…", "pending");
+
+      fetch(ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+          "Accept": "application/json"
+        },
+        body: new URLSearchParams(payload).toString()
+      })
+        .then(function (r) { return r.text(); })
+        .then(function (text) {
+          var data = {};
+          try { data = JSON.parse(text); } catch (e) { data = {}; }
+          if (String(data.success) === "true") {
+            form.reset();
+            setStatus(form, "已发送成功，谢谢！我会尽快回复你。", "ok");
+          } else {
+            throw new Error(data.message || "发送失败");
+          }
+        })
+        .catch(function () {
+          setStatus(form, "发送没有成功。可以直接写信到 " + CONTACT_MAIL + "。", "err");
+        })
+        .finally(function () {
+          if (btn) { btn.disabled = false; btn.textContent = LABELS[formId] || "提交"; }
+        });
+    });
+  }
+
+  bind("inquiryForm");
+  bind("surveyForm");
+})();
+</script>
 </body>
 </html>
